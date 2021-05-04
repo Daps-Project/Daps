@@ -1,4 +1,3 @@
 package com.daps.app
 
-class DecisionTree {
-}
+class DecisionTree
