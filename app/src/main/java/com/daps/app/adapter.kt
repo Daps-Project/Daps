@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Adapter(private val exampleList: List<Items>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+/*class Adapter(private val exampleList: List<Option>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // xml-> view objects
@@ -38,3 +38,4 @@ class Adapter(private val exampleList: List<Items>) : RecyclerView.Adapter<Adapt
         val textView3 : TextView = itemView.findViewById(R.id.text_view_3)
     }
 }
+ */
