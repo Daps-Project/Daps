@@ -27,6 +27,6 @@ class QuestionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(
             this(LayoutInflater.from(parent.context).inflate(R.layout.questions_layout, parent, false))
     fun bind(question: Question){
         itemView.questions_text.text = question.text
-        OptionsAdapter(question.options)
+        itemView.options_list.adapter = OptionsAdapter(question.options)
     }
 }

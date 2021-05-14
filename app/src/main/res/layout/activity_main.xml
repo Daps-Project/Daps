@@ -7,9 +7,9 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_fragment_container"
+        android:id="@+id/question_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.daps.app.MainFragment" />
+        class="com.daps.app.QuestionsFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
