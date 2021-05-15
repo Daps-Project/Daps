@@ -9,7 +9,7 @@ import com.daps.app.model.Option
 import kotlinx.android.synthetic.main.answer_layout.view.*
 
 class OptionsAdapter(options: List<Option>) : RecyclerView.Adapter<OptionsViewHolder>(){
-    val optionList = (options)
+    private val optionList = options
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionsViewHolder {
         return OptionsViewHolder(parent)
     }
@@ -18,7 +18,7 @@ class OptionsAdapter(options: List<Option>) : RecyclerView.Adapter<OptionsViewHo
         holder.bind(optionList[position])
     }
 
-    override fun getItemCount(): Int = optionList.size
+    override fun getItemCount(): Int = 3
 
 }
 class OptionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {

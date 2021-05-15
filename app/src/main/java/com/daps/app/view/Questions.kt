@@ -10,7 +10,7 @@ import com.daps.app.model.Question
 import kotlinx.android.synthetic.main.questions_layout.view.*
 
 class QuestionsAdapter(firstQuestion : Question) : RecyclerView.Adapter<QuestionsViewHolder>() {
-    val questionList: List<Question> = mutableListOf(firstQuestion)
+    private val questionList: List<Question> = mutableListOf(firstQuestion)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsViewHolder {
         return QuestionsViewHolder(parent)
     }

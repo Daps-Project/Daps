@@ -1,6 +1,9 @@
 package com.daps.app
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.daps.app.service.CloudAPI
@@ -22,8 +25,6 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewPager = questions_viewPager
-
         val client = OkHttpClient.Builder().build()
         val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:5000")
@@ -36,6 +37,21 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
             val call = request.getQuestions()
             viewPager.adapter = QuestionsAdapter(call.question)
         }
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewPager = questions_viewPager
+
 
     }
 
