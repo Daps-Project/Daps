@@ -1,5 +1,6 @@
 package com.daps.app.view
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +19,15 @@ class OptionsAdapter(options: List<Option>) : RecyclerView.Adapter<OptionsViewHo
         holder.bind(optionList[position])
     }
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int { return optionList.size }
 
 }
 class OptionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     constructor(parent: ViewGroup) :
             this(LayoutInflater.from(parent.context).inflate(R.layout.answer_layout, parent, false))
 
+    @SuppressLint("SetTextI18n")
     fun bind(option: Option){
-        itemView.answer_text.text = option.text
+        itemView.answer_text.text = "&#128522" + option.text
     }
 }
