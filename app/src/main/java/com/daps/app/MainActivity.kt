@@ -1,11 +1,18 @@
 package com.daps.app
 
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
+import androidx.core.provider.FontRequest
+import androidx.emoji.text.EmojiCompat
+import androidx.emoji.text.FontRequestEmojiCompatConfig
 import com.daps.app.QuestionsFragment
 
 
 class MainActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -13,6 +20,19 @@ class MainActivity : AppCompatActivity() {
         //Places.initialize(applicationContext, "AIzaSyDrzDcMBvxz0DSFIhm0vrzRDAaZi1VOOjs")
         // Create a new PlacesClient instance
         //val placesClient = Places.createClient(this)
+        val fontRequest = FontRequest(
+            "com.google.android.gms.fonts",
+            "com.google.android.gms",
+            "Noto Color Emoji Compat",
+            R.array.com_google_android_gms_fonts_certs
+        )
+        val config = FontRequestEmojiCompatConfig(this, fontRequest)
+            .setEmojiSpanIndicatorEnabled(true)
+            .setEmojiSpanIndicatorColor(Color.MAGENTA)
+            .registerInitCallback(object : EmojiCompat.InitCallback() {})
+
+        EmojiCompat.init(config)
+
     }
 
 }

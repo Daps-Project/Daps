@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.emoji.text.EmojiCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.daps.app.R
 import com.daps.app.model.Option
@@ -26,8 +27,9 @@ class OptionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(it
     constructor(parent: ViewGroup) :
             this(LayoutInflater.from(parent.context).inflate(R.layout.answer_layout, parent, false))
 
-    @SuppressLint("SetTextI18n")
     fun bind(option: Option){
-        itemView.answer_text.text = "&#128522" + option.text
+        itemView.answer_text.text = EmojiCompat
+            .get()
+            .process("${option.text} \uD83D\uDE10")
     }
 }
