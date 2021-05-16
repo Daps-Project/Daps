@@ -1,17 +1,20 @@
 package com.daps.app.view
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.emoji.text.EmojiCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.daps.app.R
 import com.daps.app.model.Option
 import kotlinx.android.synthetic.main.answer_layout.view.*
+import com.daps.app.model.Question
 
-class OptionsAdapter(options: List<Option>) : RecyclerView.Adapter<OptionsViewHolder>(){
+class OptionsAdapter(options: List<Option>, val callback: (Question) -> Unit) : RecyclerView.Adapter<OptionsAdapter.OptionsViewHolder>(){
     private val optionList = options
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionsViewHolder {
         return OptionsViewHolder(parent)
     }
@@ -22,14 +25,22 @@ class OptionsAdapter(options: List<Option>) : RecyclerView.Adapter<OptionsViewHo
 
     override fun getItemCount(): Int { return optionList.size }
 
-}
-class OptionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    constructor(parent: ViewGroup) :
-            this(LayoutInflater.from(parent.context).inflate(R.layout.answer_layout, parent, false))
+    inner class OptionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        constructor(parent: ViewGroup) :
+                this(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.answer_layout, parent, false)
+                )
 
-    fun bind(option: Option){
-        itemView.answer_text.text = EmojiCompat
-            .get()
-            .process("${option.text} \uD83D\uDE10")
+        fun bind(option: Option) {
+            itemView.answer_text.text = EmojiCompat
+                .get()
+                .process("${option.text} \uD83D\uDE10")
+            itemView.answer_text.setOnClickListener {
+                callback(option.question)
+
+            }
+
+        }
     }
 }
