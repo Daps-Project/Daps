@@ -20,6 +20,9 @@
         <meta-data
             android:name="fontProviderRequests"
             android:value="Noto Color Emoji Compat"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

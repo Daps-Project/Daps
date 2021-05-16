@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="vibrant_blue">#2F41A9</color>
+    <color name="dark_sienna">#36151E</color>
+    <color name="material_1">#52BFBC</color>
 </resources>
