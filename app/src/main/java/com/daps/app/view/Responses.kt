@@ -38,10 +38,9 @@ class OptionsAdapter(options: List<Option>, val callback: (Question) -> Unit) :
         fun bind(option: Option) {
             itemView.answer_text.text = EmojiCompat
                 .get()
-                .process("${option.text} \uD83D\uDE10")
+                .process("${option.text} \uD83D\uDC4A")
             itemView.answer_text.setOnClickListener {
                 callback(option.question)
-
             }
 
         }
