@@ -34,10 +34,6 @@ class QuestionsAdapter(firstQuestion: Question, val onQuestionSelected: (Int) ->
             itemView.options_list.adapter = OptionsAdapter(question.options) {
                 questionList.add(it)
                 onQuestionSelected(questionList.size - 1)
-
-
-
-                
             }
         }
     }
