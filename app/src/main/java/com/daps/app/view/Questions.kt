@@ -8,7 +8,8 @@ import com.daps.app.R
 import com.daps.app.model.Question
 import kotlinx.android.synthetic.main.questions_layout.view.*
 
-class QuestionsAdapter(firstQuestion : Question) : RecyclerView.Adapter<QuestionsAdapter.QuestionsViewHolder>() {
+class QuestionsAdapter(firstQuestion: Question, val onQuestionSelected: (Int) -> Unit) :
+    RecyclerView.Adapter<QuestionsAdapter.QuestionsViewHolder>() {
     private val questionList = mutableListOf(firstQuestion)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsViewHolder {
         return QuestionsViewHolder(parent)
@@ -20,7 +21,8 @@ class QuestionsAdapter(firstQuestion : Question) : RecyclerView.Adapter<Question
         holder.bind(questionList[position])
     }
 
-    inner class QuestionsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class QuestionsViewHolder constructor(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         constructor(parent: ViewGroup) :
                 this(
                     LayoutInflater.from(parent.context)
@@ -29,9 +31,9 @@ class QuestionsAdapter(firstQuestion : Question) : RecyclerView.Adapter<Question
 
         fun bind(question: Question) {
             itemView.questions_text.text = question.text
-            itemView.options_list.adapter = OptionsAdapter(question.options)  {
+            itemView.options_list.adapter = OptionsAdapter(question.options) {
                 questionList.add(it)
-                this@QuestionsAdapter.notifyDataSetChanged()
+                onQuestionSelected(questionList.size - 1)
             }
         }
     }

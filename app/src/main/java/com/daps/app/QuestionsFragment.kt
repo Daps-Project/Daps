@@ -30,8 +30,10 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
 
         GlobalScope.launch(Dispatchers.IO) {
             val call = request.getQuestions()
-            withContext(Dispatchers.Main){
-                questions_viewPager.adapter = QuestionsAdapter(call.question)
+            withContext(Dispatchers.Main) {
+                questions_viewPager.adapter = QuestionsAdapter(call.question) {
+                    questions_viewPager.currentItem = it
+                }
             }
         }
 
