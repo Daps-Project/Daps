@@ -3,16 +3,14 @@ package com.daps.app.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.emoji.text.EmojiCompat
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.daps.app.R
 import com.daps.app.model.Option
-import kotlinx.android.synthetic.main.answer_layout.view.*
 import com.daps.app.model.Question
+import kotlinx.android.synthetic.main.answer_layout.view.*
 
-class OptionsAdapter(options: List<Option>, val callback: (Question) -> Unit) :
+class OptionsAdapter(options: List<Option>, val callback: (Question?, String) -> Unit) :
     RecyclerView.Adapter<OptionsAdapter.OptionsViewHolder>() {
     private val optionList = options
 
@@ -38,9 +36,10 @@ class OptionsAdapter(options: List<Option>, val callback: (Question) -> Unit) :
         fun bind(option: Option) {
             itemView.answer_text.text = EmojiCompat
                 .get()
-                .process("${option.text} \uD83D\uDC4A")
+                .process("${option.text}") /* \uD83D\uDC4A") */
+
             itemView.answer_text.setOnClickListener {
-                callback(option.question)
+                callback(option.question, option.text)
             }
 
         }

@@ -1,8 +1,6 @@
 package com.daps.app
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.daps.app.service.CloudAPI
@@ -31,9 +29,23 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
         GlobalScope.launch(Dispatchers.IO) {
             val call = request.getQuestions()
             withContext(Dispatchers.Main) {
-                questions_viewPager.adapter = QuestionsAdapter(call.question) {
-                    questions_viewPager.currentItem = it
-                }
+                questions_viewPager.adapter = QuestionsAdapter(
+                    call.question,
+                    {
+                        questions_viewPager.currentItem = it
+                    },
+                    {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val client2 = OkHttpClient.Builder().build()
+                            val retrofit2 = Retrofit.Builder()
+                                .baseUrl("http://10.0.2.2:5000")
+                                .client(client2)
+                                .build()
+                            val postRequest = retrofit2.create(CloudAPI::class.java)
+                            postRequest.postData(it)
+                        }
+                    }
+                )
             }
         }
 
