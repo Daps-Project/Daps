@@ -9,6 +9,7 @@ interface CloudAPI {
     @GET("/data")
     suspend fun getQuestions(): GetQuestionsResponse
 
+    @Headers("Content-Type: application/json")
     @POST("/survey_data")
     fun postData(@Body survey_data: PostResponses): Call<PostResponses>
 }

@@ -38,7 +38,7 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
                         GlobalScope.launch(Dispatchers.IO) {
                             val apiService = RestApiService()
                             val postRequest = PostResponses(responses = it)
-                            apiService.postData(postRequest) {
+                            apiService.sendData(postRequest) {
                                 Log.v(
                                     "Logging this response back",
                                     it?.responses.toString()
@@ -52,7 +52,7 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
     }
 }
 class RestApiService {
-    fun postData(data: PostResponses, onResult: (PostResponses?) -> Unit) {
+    fun sendData(data: PostResponses, onResult: (PostResponses?) -> Unit) {
         val postRequest = ServiceBuilder.buildService(CloudAPI::class.java)
         postRequest.postData(data).enqueue(
             object : Callback<PostResponses> {
