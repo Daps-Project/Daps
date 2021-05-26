@@ -1,15 +1,14 @@
 package com.daps.app.service
 
 import com.daps.app.model.GetQuestionsResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import com.daps.app.model.PostResponses
+import retrofit2.http.*
+import retrofit2.Call
 
 interface CloudAPI {
     @GET("/data")
     suspend fun getQuestions(): GetQuestionsResponse
 
     @POST("/survey_data")
-    fun postData(@Body survey_data: List<String>)
+    fun postData(@Body survey_data: PostResponses): Call<PostResponses>
 }

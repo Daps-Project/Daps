@@ -43,6 +43,7 @@ class QuestionsAdapter(firstQuestion: Question?, val onQuestionSelected: (Int) -
                     notifyDataSetChanged()
                 }
                 else{
+                    print(surveyList)
                     onSurveyComplete(surveyList)
                 }
             }
