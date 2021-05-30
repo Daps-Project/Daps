@@ -9,6 +9,8 @@ import com.daps.app.R
 import com.daps.app.model.Option
 import com.daps.app.model.Question
 import kotlinx.android.synthetic.main.answer_layout.view.*
+import okhttp3.Request
+
 
 class OptionsAdapter(options: List<Option>, val callback: (Question?, String) -> Unit) :
     RecyclerView.Adapter<OptionsAdapter.OptionsViewHolder>() {
