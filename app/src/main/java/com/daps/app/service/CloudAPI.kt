@@ -11,7 +11,7 @@ interface CloudAPI {
     suspend fun getQuestions(): GetQuestionsResponse
 
     @GET("/survey_data")
-    suspend fun getPlaceIDs(): Dictionary<Int, String>
+    suspend fun getPlaceIDs(): List<String>
 
 
     @Headers("Content-Type: application/json")

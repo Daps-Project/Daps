@@ -9,10 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.daps.app.model.PostResponses
 import com.daps.app.view.QuestionsAdapter
 import kotlinx.android.synthetic.main.questions_fragment_layout.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 
 class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
@@ -39,11 +36,17 @@ class QuestionsFragment : Fragment(R.layout.questions_fragment_layout) {
                                     it?.responses.toString()
                                 )
                             }
+                            delay(4000)
+                            withContext(Dispatchers.Main) {
+                                findNavController().navigate(QuestionsFragmentDirections.actionQuestionsFragmentToResultsFragment())
+                            }
                         }
                     }
                 )
             }
+
         }
+
     }
 }
 

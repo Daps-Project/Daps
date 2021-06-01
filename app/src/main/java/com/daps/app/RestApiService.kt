@@ -7,7 +7,6 @@ import com.daps.app.service.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class RestApiService {
     private val request = ServiceBuilder.buildService(CloudAPI::class.java)
@@ -30,7 +29,7 @@ class RestApiService {
         return request.getQuestions()
     }
 
-    suspend fun getPlaceIDs(): Dictionary<Int, String> {
+    suspend fun getPlaceIDs(): List<String> {
         return request.getPlaceIDs()
     }
 }

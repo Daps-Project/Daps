@@ -9,6 +9,7 @@ import androidx.core.provider.FontRequest
 import androidx.emoji.text.EmojiCompat
 import androidx.emoji.text.FontRequestEmojiCompatConfig
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.libraries.places.api.Places
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,9 +22,10 @@ class MainActivity : AppCompatActivity() {
         //  val navController = navHostFragment.navController
 
         //  https://developers.google.com/maps/documentation/places/android-sdk/start
-        //  Places.initialize(applicationContext, "AIzaSyDrzDcMBvxz0DSFIhm0vrzRDAaZi1VOOjs")
+          Places.initialize(applicationContext, "AIzaSyDrzDcMBvxz0DSFIhm0vrzRDAaZi1VOOjs")
         //  Create a new PlacesClient instance
         //  val placesClient = Places.createClient(this)
+        val placesClient = Places.createClient(this)
         val fontRequest = FontRequest(
             "com.google.android.gms.fonts",
             "com.google.android.gms",
